@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import CharacterCard from "./components/CharacterCard";
+import styled from "styled-components";
 
 // Try to think through what state you'll need for this app before starting. Then build out
 // the state properties here.
@@ -11,7 +12,7 @@ import CharacterCard from "./components/CharacterCard";
 // sync up with, if any.
 
 function App(props) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   // const [person, setPerson] = useState();
 
   useEffect(() => {
@@ -26,9 +27,13 @@ function App(props) {
       });
   }, []);
 
+  const H1 = styled.h1`
+    font-size: 3rem;
+  `;
+
   return (
     <div className="App">
-      <h1 className="Header">React Wars</h1>
+      <H1 className="Header">React Wars</H1>
       <div>
         <CharacterCard data={data} />
       </div>
