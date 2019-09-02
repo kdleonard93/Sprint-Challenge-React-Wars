@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import {
   Card,
   CardImg,
@@ -20,15 +19,37 @@ const CustomCard = styled(Card)`
   border-bottom: 1px solid red;
   background-color: white;
 `;
-function CharacterCard(props) {
+
+const Name = styled(CardTitle)`
+  color grey;
+`;
+
+const charTraits = styled.li`
+  color: green;
+`;
+
+const CharacterCard = props => {
+  const people = props.data;
+  console.log(people);
+
   return (
     <>
-      <Card body>
-        <characterName>{props.name}</characterName>
-        <CardText></CardText>
-      </Card>
+      {people.map(char => {
+        return (
+          <Card>
+            <CardTitle>{props.name}</CardTitle>
+            <CardText>{props.birth_year}</CardText>
+            <CardText>{props.gender}</CardText>
+            <CardText>{props.hair_color}</CardText>
+            <CardText>{props.height}</CardText>
+            <CardText>{props.mass}</CardText>
+            <CardText>{props.eye_color}</CardText>
+            <CardText>{props.skin_color}</CardText>
+          </Card>
+        );
+      })}
     </>
   );
-}
+};
 
 export default CharacterCard;
